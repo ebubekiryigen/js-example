@@ -1,0 +1,36 @@
+let userNumbers = [4, 8, 15, 16, 23, 42];
+
+let lotteryNumbers = [];
+
+for (let i = 0; i < 6; i++) {
+  let number;
+  do {
+    number = Math.floor(Math.random() * 49) + 1;
+  } while (lotteryNumbers.includes(number));
+  lotteryNumbers.push(number);
+}
+
+let correctNumbers = 0;
+
+for (let i = 0; i < 6; i++) {
+  if (userNumbers.includes(lotteryNumbers[i])) {
+    correctNumbers++;
+  }
+}
+
+let prize = 0;
+
+if (correctNumbers === 6) {
+  prize = 10000000;
+} else if (correctNumbers === 5) {
+  prize = 10000;
+} else if (correctNumbers === 4) {
+  prize = 100;
+} else if (correctNumbers === 3) {
+  prize = 10;
+}
+
+alert("Kullanıcının tahminleri: " + userNumbers);
+alert("Rasgele seçilen numaralar: " + lotteryNumbers);
+alert("Doğru tahmin edilen sayıların sayısı: " + correctNumbers);
+alert("Kazanılan ödül miktarı: $" + prize);
